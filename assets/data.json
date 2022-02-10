@@ -1,0 +1,157 @@
+[
+	{
+		"name": "Carbonara",
+		"photo": "assets/images/carbonara.jpeg",
+		"author": {
+			"name": "Vera Janssen",
+			"quote": "Ik kan eigenlijk heleemaal niet koken",
+			"portrait": "assets/images/vera.jpeg"
+		},
+		"time": 15,
+		"kcal": 300,
+		"ingredients": 8,
+		"instructions": [
+			"1. Zet water op voor spaghetti en kook volgens de verpakking.",
+			"2. Bak de spekjes. Snijd de knoflook en voeg na circa 10 min aan de spekjes.",
+			"3. Bak in de tussentijd de champignons op laag vuur.",
+			"4. Voeg de eieren toe aan een kom en kluts ze met een vork. Breng op smaak met peper en zout en de italiaanse kruiden. Voeg de melk en 250 gr. kaas toe als je spaghetti bijna klaar is.",
+			"5. Giet de spaghetti af. Voeg de spekjes en de knoflook toe aan de pan met spaghetti. Voeg het ei mengsel toe en begin te roeren terwijl de pan op laag vuur staat.",
+			"6. Serveer zsm en besprenkel met de resterende kaas."
+		],
+		"ingredientlist": [
+			"500gr. Spaghetti",
+			"300gr. Spekjes",
+			"300gr. Parmezaanse Kaas",
+			"6 eieren (4 ei dooiers, 2 hele eieren)",
+			"400gr. Champignon",
+			"150ml. Melk",
+			"Italiaanse Kruiden",
+			"6 tenen knoflook"
+		],
+		"likes": 10,
+		"comments": 90,
+		"bookmark": false,
+		"index": 0
+	},
+	{
+		"name": "Top Taco Saus",
+		"photo": "assets/images/tacosaus.jpeg",
+		"author": {
+			"name": "Rosa Cienfuegos",
+			"quote": "My body is a temple",
+			"portrait": "assets/images/rosa.jpeg"
+		},
+		"time": 25,
+		"kcal": 20,
+		"ingredients": 8,
+		"instructions": [
+			"Verwijder als je het geluk had om verse tomatillo's te vinden, de omhulsels van de tomatillo's en was het fruit grondig.",
+			"Doe een halve witte ui, de knoflook, tomaat en tomatillo's in een pan, giet er 1 eetlepel olie en 500 ml water bij en breng aan de kook op hoog vuur. Kook de groenten 3 minuten, haal de pan van het vuur, leg het deksel op de pan en laat het mengsel afkoelen tot kamertemperatuur.",
+			"Verwarm 2 eetlepels olie in een koekenpan op laag vuur. Bak de guajillo peper al roerend, 3 minuten aan beide kanten en let op dat de pepers niet verbranden. Schep met een schuimspaan de peper uit de pan en voeg ze bij de groenten in de pan.",
+			"Herhaal deze voorgaande stappen met de andere peper.",
+			"Hak intussen de overgebleven ui fijn. .",
+			"Giet de inhoud van de pan in een grote vijzel of blender, voeg zout toe en maal de groenten een stamper of in een blender tot een grove salsa.",
+			"Schep de salsa in een kom, roer de fijngehakte ui erdoor en serveer hem"
+		],
+		"ingredientlist": [
+			"300 gr tomatillo's, vers of uit blik",
+			"0,5 witte ui,",
+			"2 tenen knoflook",
+			"1 tomaat",
+			"100 ml olie",
+			"2 gedroogde guajillo pepers",
+			"10 gr gedroogde chile de àrbol",
+			"10 gr zout"
+		],
+		"likes": 10,
+		"comments": 15,
+		"bookmark": false,
+		"index": 1
+	},
+	{
+		"name": "Pita (Shoarma)",
+		"photo": "assets/images/pita.jpeg",
+		"author": {
+			"name": "Max Camps",
+			"quote": "My body is a temple",
+			"portrait": "assets/images/max.jpeg"
+		},
+		"time": 20,
+		"kcal": 150,
+		"ingredients": 7,
+		"instructions": [
+			"1. Add the water and milk to a jug and check the temperature. If it's cold warm it up to room temperature and no hotter",
+			"2. Add the sugar and yeast to the milk and stir to combine. Allow to sit for 10-15 minutes to bloom",
+			"3. After 10-15 minutes check if the yeast has activated and a frothy layer exists, if not your yeast is dead and the dough will not rise",
+			"4. Add the flour and salt to your mixing bowl, and mix briefly to combine",
+			"5. Make a well in the centre and add the yeast mixture and the oil. Use the dough hook attachment on your stand mixer or your hands to combine the yeast and flour together into a shaggy dough ball",
+			"6. Knead on low speed for 8-10 minutes with the mixer or 12-15 by hand until the dough ball is smooth and soft. It should be only a tiny bit sticky to the hand",
+			"7. Oil a bowl lightly then add your dough to the bowl, ensure there is space for it to double in size. Cover with plastic wrap or a kitchen towel and allow it to rise for 1 hour",
+			"8. After one hour flour your worktop and place the risen dough on it. Knock out the air and cut into the desired number of pieces",
+			"9. Weigh your pieces to ensure they are all equally sized, then roll the dough into balls. Keep them covered until needed",
+			"10. Flour your worktop then flatten a dough ball on it. Use a rolling pin to roll the dough out to the correct size in one direction. Turn it 90 degrees and roll the other way",
+			"11. Allow your dough to rise for between 15-30 minutes before cooking",
+			"Note: If you are working with more than 12 pieces of dough, I do not recommend rolling them all out at once. After they have sat and risen for more then 40 minutes without cooking they will over proof and you'll have to re-roll them and wait for them to rise again otherwise they will fail to inflate. Work in batches while the rest are cooking."
+		],
+		"ingredientlist": [
+			"300g all purpose flour (patent bloem)",
+			"85g volle melk",
+			"85g water",
+			"20g olijfolie",
+			"13g suiker",
+			"8.5g zout",
+			"7.5 gedroogde gist"
+		],
+		"likes": 10,
+		"comments": 15,
+		"bookmark": false,
+		"index": 2
+	},
+	{
+		"name": "Tasty vegan lasagne",
+		"photo": "assets/images/vegalasagna.jpeg",
+		"author": {
+			"name": "Jamie Oliver",
+			"quote": "Professional TV chef",
+			"portrait": "assets/images/jamie.jpeg"
+		},
+		"time": 180,
+		"kcal": 539,
+		"ingredients": 16,
+		"instructions": [
+			"Peel the onions, garlic and carrots, trim the celery and pick the rosemary leaves, then finely chop.",
+			"Scrape into a large pan on a medium heat with 2 tablespoons of oil and the chilli flakes, and cook for 20 minutes, or until lightly golden.",
+			"Pour in the wine and let it bubble and cook away, then tip in the lentils (juices and all).",
+			"Scrunch in the tomatoes, add 1 tin’s worth of water, then simmer over a low heat for 1 hour. Season to perfection with sea salt and black pepper.",
+			"Meanwhile, working in batches, tear the mushrooms into a large non-stick frying pan on a medium heat and dry-fry for 5 minutes (this will bring out the nutty flavour), then transfer to a plate.",
+			"Quickly wipe the pan, then pour in 4 tablespoons of oil and stir in the flour. Gradually whisk in the almond milk, simmer for 5 minutes to thicken, then pour into a blender.",
+			"Add a third of the mushrooms and 50g of the cheese, season with salt and pepper, then blitz until smooth.",
+			"Preheat the oven to 180ºC/350ºF/gas 4.",
+			"Spoon a layer of tomato sauce into the bottom of a 25cm x 35cm baking dish, scatter over a few mushrooms, then cover with lasagne sheets and 5 tablespoons of creamy sauce. Repeat these layers three more times, finishing with all the remaining creamy sauce and mushrooms.",
+			"Grate over the remaining cheese. Pick the sage, toss in a little oil, then push into the top layer.",
+			"Bake at the bottom of the oven for 50 minutes, or until golden and bubbling. Leave to stand for 15 minutes before serving. Delicious served with a simple seasonal salad."
+		],
+		"ingredientlist": [
+			"2 red onions",
+			"2 cloves of garlic",
+			"2 carrots",
+			"2 sticks of celery",
+			"2 sprigs of fresh rosemary",
+			"olive oil",
+			"1 teaspoon dried chilli flakes",
+			"100 ml vegan Chianti wine",
+			"1 x 400g tin of green lentils",
+			"2 x 400g tins of quality plum tomatoes",
+			"1 kg mixed wild mushrooms",
+			"4 heaped tablespoons plain flour",
+			"800 ml almond milk",
+			"70 g vegan Cheddar cheese",
+			"300 g dried lasagne sheets",
+			"½ a bunch of fresh sage (15g)"
+		],
+		"likes": 1,
+		"comments": 1,
+		"bookmark": false,
+		"index": 3
+	}
+]
