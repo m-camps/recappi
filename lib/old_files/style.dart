@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'recappi.dart';
 import 'profile.dart';
 import 'recipe_list.dart';
 import 'single_recipe.dart';

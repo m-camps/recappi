@@ -39,55 +39,46 @@ class _MyAppState extends State<Recappi2021> {
         children: buildBookmarks(recipeList),
       )
     ];
-
-    return MaterialApp(
-      routes: routes,
-      theme: ThemeData(
-        fontFamily: 'OpenSans',
-        primaryColor: red,
-      ),
-      title: 'Flutter Demo',
-      color: red,
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: red,
-            title: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Image.asset(
-                'assets/images/logo_recappi.png',
-                color: white,
-                height: 40.0,
-              ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: red,
+          title: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Image.asset(
+              'assets/images/logo_recappi.png',
+              color: white,
+              height: 40.0,
             ),
           ),
-          body: Scaffold(
-            appBar: AppBar(
-              backgroundColor: white,
-              flexibleSpace: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  TabBar(
-                    labelStyle: TextStyle(fontWeight: FontWeight.w800),
-                    labelColor: red,
-                    unselectedLabelColor: greyColor,
-                    indicatorColor: red,
-                    tabs: [
-                      Tab(text: 'My friends'),
-                      Tab(text: 'Discover'),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            body: bottomNavPages.elementAt(_selectedIndex),
-            backgroundColor: backgroundRed,
-          ),
-          bottomNavigationBar: bottomNav(),
         ),
+        body: Scaffold(
+          appBar: AppBar(
+            backgroundColor: white,
+            flexibleSpace: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                TabBar(
+                  labelStyle: TextStyle(fontWeight: FontWeight.w800),
+                  labelColor: red,
+                  unselectedLabelColor: greyColor,
+                  indicatorColor: red,
+                  tabs: [
+                    Tab(text: 'My friends'),
+                    Tab(text: 'Discover'),
+                  ],
+                )
+              ],
+            ),
+          ),
+          body: bottomNavPages.elementAt(_selectedIndex),
+          backgroundColor: backgroundRed,
+        ),
+        bottomNavigationBar: bottomNav(),
       ),
     );
+    // );
   }
 
   Widget bottomNav() {
