@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:recappi/src/routes.dart';
-import '../firebase_options.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;

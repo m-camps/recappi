@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../src/storage_util.dart';
 import 'recipe_list.dart';
 import 'style.dart';
 import 'data.dart';
@@ -36,11 +37,19 @@ class _SingleRecipeState extends State<SingleRecipe> {
                 children: [
                   Hero(
                     tag: recipe.index,
-                    child: Image.asset(
-                      recipe.photo,
-                      height: 300.0,
-                      width: 1000.0,
-                      fit: BoxFit.cover,
+                    child: FutureBuilder(
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Container();
+                        }
+                        return Image.network(
+                          snapshot.data.toString(),
+                          height: 300.0,
+                          width: 1000.0,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      future: recipe.photo,
                     ),
                   ),
                   Container(

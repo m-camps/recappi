@@ -64,7 +64,7 @@ class Author {
 
 class Recipe {
   String name;
-  String photo;
+  Future<dynamic> photo;
   Author author;
   int time;
   int kcal;
@@ -107,7 +107,7 @@ class Recipe {
   }) {
     return Recipe(
       name: name ?? this.name,
-      photo: photo ?? this.photo,
+      photo: this.photo,
       author: author ?? this.author,
       time: time ?? this.time,
       kcal: kcal ?? this.kcal,

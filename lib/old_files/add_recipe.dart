@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recappi/src/storage_util.dart';
 import 'style.dart';
 import 'data.dart';
 import 'dart:math';
@@ -29,7 +30,7 @@ class _RecipeFormState extends State<RecipeForm> {
     );
     Recipe _recipe = Recipe(
       name: "",
-      photo: recipePhotos[Random().nextInt(5)],
+      photo: getImageUrl("recipe_1.jpg"),
       author: author,
       time: 0,
       kcal: 0,

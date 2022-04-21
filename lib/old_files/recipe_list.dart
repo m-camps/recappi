@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:recappi/src/storage_util.dart';
 import 'style.dart';
 import 'dart:math';
 import 'data.dart';
@@ -13,7 +15,7 @@ Recipe makeRecipe() {
   );
   Recipe _recipe = Recipe(
     name: recipeNames[Random().nextInt(5)],
-    photo: recipePhotos[Random().nextInt(5)],
+    photo: getImageUrl("recipe_2.jpg"),
     author: author,
     time: time[Random().nextInt(4)],
     kcal: Random().nextInt(300) + 200,
@@ -247,11 +249,19 @@ class _RecipeCardState extends State<RecipeCard> {
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: Hero(
                                   tag: widget.recipe.index,
-                                  child: Image.asset(
-                                    widget.recipe.photo,
-                                    height: 150.0,
-                                    width: 150.0,
-                                    fit: BoxFit.cover,
+                                  child: FutureBuilder(
+                                    builder: (context, snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return CircularProgressIndicator();
+                                      }
+                                      return CachedNetworkImage(
+                                        imageUrl: snapshot.data.toString(),
+                                        height: 150.0,
+                                        width: 150.0,
+                                        fit: BoxFit.cover,
+                                      );
+                                    },
+                                    future: widget.recipe.photo,
                                   ),
                                 ),
                               ),
