@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:recappi/src/storage_util.dart';
+import 'package:recappi/src/firebase_storage/storage_util.dart';
 import 'style.dart';
 import 'dart:math';
 import 'data.dart';

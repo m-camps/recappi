@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recappi/src/storage_util.dart';
+import 'package:recappi/src/firebase_storage/storage_util.dart';
 import 'style.dart';
 import 'data.dart';
 import 'dart:math';
