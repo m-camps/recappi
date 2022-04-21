@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import '../auth/auth_login.dart';
+import '../firebase_auth/auth_login.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login"),
       ),
-      body: const EmailPasswordForm(),
+      body: EmailPasswordForm(),
     );
   }
 }

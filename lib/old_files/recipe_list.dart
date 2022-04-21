@@ -15,7 +15,7 @@ Recipe makeRecipe() {
   );
   Recipe _recipe = Recipe(
     name: recipeNames[Random().nextInt(5)],
-    photo: getImageUrl("recipe_2.jpg"),
+    photo: getImageUrl("recipe_1.jpg"),
     author: author,
     time: time[Random().nextInt(4)],
     kcal: Random().nextInt(300) + 200,
@@ -252,7 +252,7 @@ class _RecipeCardState extends State<RecipeCard> {
                                   child: FutureBuilder(
                                     builder: (context, snapshot) {
                                       if (!snapshot.hasData) {
-                                        return CircularProgressIndicator();
+                                        return const CircularProgressIndicator();
                                       }
                                       return CachedNetworkImage(
                                         imageUrl: snapshot.data.toString(),

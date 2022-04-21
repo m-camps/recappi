@@ -5,14 +5,8 @@ import '../utils.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 
-class EmailPasswordForm extends StatefulWidget {
-  const EmailPasswordForm({Key? key}) : super(key: key);
-
-  @override
-  _EmailPasswordFormState createState() => _EmailPasswordFormState();
-}
-
-class _EmailPasswordFormState extends State<EmailPasswordForm> {
+class EmailPasswordForm extends StatelessWidget {
+  EmailPasswordForm({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -36,7 +30,7 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     if (auth.currentUser == null) {
-                      _login();
+                      _login(context);
                     } else {
                       showSnackBar("Someone already is signed in", context);
                     }
@@ -66,14 +60,12 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
     );
   }
 
-  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    super.dispose();
   }
 
-  void _login() async {
+  void _login(BuildContext context) async {
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(

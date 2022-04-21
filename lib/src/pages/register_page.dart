@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../auth/auth_register.dart';
+import '../firebase_auth/auth_register.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

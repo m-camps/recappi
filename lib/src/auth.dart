@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'auth/auth_login.dart';
-import 'auth/auth_register.dart';
+import 'firebase_auth/auth_login.dart';
+import 'firebase_auth/auth_register.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -47,8 +47,8 @@ class _AuthPageState extends State<AuthPage> {
         return ListView(
           scrollDirection: Axis.vertical,
           padding: const EdgeInsets.all(16),
-          children: const <Widget>[
-            RegisterEmail(),
+          children: <Widget>[
+            const RegisterEmail(),
             EmailPasswordForm(),
           ],
         );

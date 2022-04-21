@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:recappi/src/storage_util.dart';
+import 'package:recappi/src/firestore/test.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,50 +13,31 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-                child: const Text("Login"),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: const Text("Register"),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/recappi');
-                },
-                child: const Text("Recappi"),
-              ),
-            ),
-            FutureBuilder(
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Container();
-                }
-                return Image.network(
-                  snapshot.data.toString(),
-                  height: 150.0,
-                  width: 150.0,
-                  fit: BoxFit.cover,
-                );
-              },
-              future: getImageUrl("recipe_1.jpg"),
-            ),
+          children: const [
+            NavigationButton(route: "/login"),
+            NavigationButton(route: "/register"),
+            NavigationButton(route: "/recappi"),
+            AddUser("Max", "Very nice", "someUrl"),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NavigationButton extends StatelessWidget {
+  const NavigationButton({Key? key, required this.route}) : super(key: key);
+  final String route;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Text(route),
       ),
     );
   }
