@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:recappi/old_files/style.dart';
 import '../utils.dart';
 
@@ -20,7 +21,9 @@ class EmailPasswordForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            EmailLoginFormField(emailController: _emailController),
+            EmailLoginFormField(
+              emailController: _emailController,
+            ),
             PasswordLoginFormField(passwordController: _passwordController),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -75,6 +78,7 @@ class EmailPasswordForm extends StatelessWidget {
       if (userCredential.user != null) {
         String? _userEmail = userCredential.user?.email;
         showSnackBar("Succesfully logged in " + _userEmail.toString(), context);
+        Navigator.popAndPushNamed(context, '/recappi');
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar("Login failed error: " + e.code, context);
@@ -83,18 +87,14 @@ class EmailPasswordForm extends StatelessWidget {
 }
 
 class EmailLoginFormField extends StatelessWidget {
-  const EmailLoginFormField({
-    Key? key,
-    required TextEditingController emailController,
-  })  : _emailController = emailController,
-        super(key: key);
-
-  final TextEditingController _emailController;
+  final TextEditingController emailController;
+  const EmailLoginFormField({Key? key, required this.emailController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: _emailController,
+      controller: emailController,
       decoration: const InputDecoration(labelText: 'Email'),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -124,6 +124,9 @@ class PasswordLoginFormField extends StatelessWidget {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter some text';
+        }
+        if (value.length < 8) {
+          return 'Pleas enter more than 8 characters';
         }
         return null;
       },

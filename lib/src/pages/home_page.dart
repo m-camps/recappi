@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recappi/src/firestore/test.dart';
+import 'package:recappi/src/firebase_auth/auth_signout.dart';
+import 'package:recappi/src/firestore/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,6 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: const [SignOutUser()],
         title: const Text("Homepage"),
       ),
       body: Center(
@@ -16,8 +19,8 @@ class HomePage extends StatelessWidget {
           children: const [
             NavigationButton(route: "/login"),
             NavigationButton(route: "/register"),
-            NavigationButton(route: "/recappi"),
-            AddUser("Max", "Very nice", "someUrl"),
+            AddUserToFirestore("Max", "Very nice", "someUrl"),
+            GetUserName(),
           ],
         ),
       ),
