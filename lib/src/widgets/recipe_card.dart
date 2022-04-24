@@ -23,8 +23,8 @@ class RecipeCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Flexible(child: GreyRedIconBlock()),
-                    Flexible(child: RecipeImage()),
+                    Flexible(flex: 1, child: GreyRedIconBlock()),
+                    Flexible(flex: 1, child: RecipeImage()),
                   ],
                 ),
               ),
@@ -87,21 +87,21 @@ class GreyRedIconBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 10.0,
-            top: 10.0,
-          ),
-          child: Column(
-            children: const [
-              GreyIconSolo(Icons.timer, '5 min'),
-              GreyIconSolo(Icons.local_fire_department, "314 kcal"),
-              GreyIconSolo(Icons.list, "12 ingredients"),
-            ],
+        Flexible(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Column(
+              children: const [
+                GreyIconSolo(Icons.timer, '5 min'),
+                GreyIconSolo(Icons.local_fire_department, "314 kcal"),
+                GreyIconSolo(Icons.list, "12 ingredients"),
+              ],
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+        Flexible(
+          flex: 1,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
