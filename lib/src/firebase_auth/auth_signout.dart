@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:recappi/old_files/style.dart';
 import 'package:recappi/src/utils.dart';
 
 class SignOutUser extends StatelessWidget {
@@ -7,18 +8,20 @@ class SignOutUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return TextButton(
       onPressed: () {
         FirebaseAuth user = FirebaseAuth.instance;
         if (user.currentUser != null) {
           FirebaseAuth.instance.signOut();
           showSnackBar(
               "Signed out " + user.currentUser!.uid.toString(), context);
+          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
         } else {
           showSnackBar("Nobody signed in!", context);
+          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
         }
       },
-      child: const Text("Sign Out"),
+      child: const Icon(Icons.logout, color: white),
     );
   }
 }

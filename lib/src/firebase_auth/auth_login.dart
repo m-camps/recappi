@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-// import 'package:recappi/old_files/style.dart';
 import '../utils.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -78,7 +76,8 @@ class EmailPasswordForm extends StatelessWidget {
       if (userCredential.user != null) {
         String? _userEmail = userCredential.user?.email;
         showSnackBar("Succesfully logged in " + _userEmail.toString(), context);
-        Navigator.popAndPushNamed(context, '/recappi');
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/homepage', (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar("Login failed error: " + e.code, context);

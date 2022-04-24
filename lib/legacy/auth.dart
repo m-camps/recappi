@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'firebase_auth/auth_login.dart';
-import 'firebase_auth/auth_register.dart';
+import 'package:recappi/src/firebase_auth/auth_login.dart';
+import 'package:recappi/src/firebase_auth/auth_register.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 

@@ -27,17 +27,9 @@ class _MyAppState extends State<Recappi2021> {
   @override
   Widget build(BuildContext context) {
     List<Widget> bottomNavPages = [
-      ListView(
-        shrinkWrap: true,
-        children: buildAllRecipes(recipeList),
-      ),
-      const Center(
-        child: RecipeForm(),
-      ),
-      ListView(
-        shrinkWrap: true,
-        children: buildBookmarks(recipeList),
-      )
+      ListView(shrinkWrap: true, children: buildAllRecipes(recipeList)),
+      const Center(child: RecipeForm()),
+      ListView(shrinkWrap: true, children: buildBookmarks(recipeList))
     ];
     return DefaultTabController(
       length: 2,

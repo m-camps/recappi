@@ -52,7 +52,7 @@ List<Widget> buildAllRecipes(List<Recipe> _recipeList) {
   int i = 0;
 
   for (var recipe in _recipeList) {
-    _recipes.add(RecipeCard(recipe));
+    _recipes.add(RecipeCardOld(recipe));
     recipe.index = i;
     i++;
   }
@@ -63,7 +63,7 @@ List<Widget> buildBookmarks(List<Recipe> _recipeList) {
   final List<Widget> _recipes = <Widget>[];
 
   for (var recipe in _recipeList) {
-    if (recipe.bookmark) _recipes.add(RecipeCard(recipe));
+    if (recipe.bookmark) _recipes.add(RecipeCardOld(recipe));
   }
   if (_recipes.isEmpty) {
     _recipes.add(
@@ -185,16 +185,16 @@ class _BookmarkRecipeState extends State<BookmarkRecipe> {
   }
 }
 
-class RecipeCard extends StatefulWidget {
+class RecipeCardOld extends StatefulWidget {
   final Recipe recipe;
 
-  const RecipeCard(this.recipe, {Key? key}) : super(key: key);
+  const RecipeCardOld(this.recipe, {Key? key}) : super(key: key);
 
   @override
-  _RecipeCardState createState() => _RecipeCardState();
+  _RecipeCardOldState createState() => _RecipeCardOldState();
 }
 
-class _RecipeCardState extends State<RecipeCard> {
+class _RecipeCardOldState extends State<RecipeCardOld> {
   @override
   Widget build(BuildContext context) {
     return Padding(
