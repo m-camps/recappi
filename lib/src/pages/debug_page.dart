@@ -15,7 +15,7 @@ class DebugPage extends StatelessWidget {
           children: const [
             NavigationButton(route: "/login", replace: false),
             NavigationButton(route: "/register", replace: false),
-            NavigationButton(route: "/homepage", replace: true),
+            NavigationButton(route: "/homepage", replace: false),
             NavigationButton(route: "/recappi", replace: false),
           ],
         ),

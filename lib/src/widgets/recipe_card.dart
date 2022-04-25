@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recappi/src/constants.dart';
+import 'package:recappi/src/firebase_storage/storage_util.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({Key? key}) : super(key: key);
@@ -45,9 +46,17 @@ class RecipeImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         child: AspectRatio(
           aspectRatio: 1 / 1,
-          child: CachedNetworkImage(
-            imageUrl: "assets/images/recipe_1.jpg",
-            fit: BoxFit.cover,
+          child: FutureBuilder(
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+              return CachedNetworkImage(
+                imageUrl: snapshot.data.toString(),
+                fit: BoxFit.cover,
+              );
+            },
+            future: getImageUrl("recipe_1.jpg"),
           ),
         ),
       ),

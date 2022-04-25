@@ -76,8 +76,8 @@ class EmailPasswordForm extends StatelessWidget {
       if (userCredential.user != null) {
         String? _userEmail = userCredential.user?.email;
         showSnackBar("Succesfully logged in " + _userEmail.toString(), context);
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/homepage', (route) => false);
+        // Navigator.of(context)
+        // .pushNamedAndRemoveUntil('/homepage', (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar("Login failed error: " + e.code, context);
