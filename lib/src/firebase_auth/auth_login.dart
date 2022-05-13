@@ -1,14 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:recappi/src/manager/auth_manager.dart';
 import '../utils.dart';
-
-FirebaseAuth auth = FirebaseAuth.instance;
 
 class EmailPasswordForm extends StatelessWidget {
   EmailPasswordForm({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController =
+      TextEditingController(text: "test@test.com");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "Testtest");
+  final AuthManager auth = AuthManager();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class EmailPasswordForm extends StatelessWidget {
                 child: const Text('Login'),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    if (auth.currentUser == null) {
+                    if (auth.isSignedIn() == false) {
                       _login(context);
                     } else {
                       showSnackBar("Someone already is signed in", context);
@@ -76,8 +78,8 @@ class EmailPasswordForm extends StatelessWidget {
       if (userCredential.user != null) {
         String? _userEmail = userCredential.user?.email;
         showSnackBar("Succesfully logged in " + _userEmail.toString(), context);
-        // Navigator.of(context)
-        // .pushNamedAndRemoveUntil('/homepage', (route) => false);
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/homepage', (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar("Login failed error: " + e.code, context);

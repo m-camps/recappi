@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:recappi/src/manager/auth_manager.dart';
 
 const primaryRed = Color(0xFFD5320B);
 const extraGreen = Color(0xFF009070);
 const secondaryRed = Color(0xFFFF7042);
 const white = Color(0xFFFFFFFF);
 const whiteBG = Color(0xFFFAEFEC);
-const unselected = Color(0xFF6A6767);
+const unselected = Color(0xFFBBBBBB);
+const text = Color(0xFF383838);
 
 const Map<int, Color> primaryRedSwatch = {
   50: Color.fromRGBO(213, 50, 11, .1),
@@ -19,3 +21,6 @@ const Map<int, Color> primaryRedSwatch = {
   800: Color.fromRGBO(213, 50, 11, .9),
   900: Color.fromRGBO(213, 50, 11, 1),
 };
+
+AuthManager auth = AuthManager();
+// StorageManager storage = StorageManager();

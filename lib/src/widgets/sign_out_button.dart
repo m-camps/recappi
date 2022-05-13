@@ -12,13 +12,15 @@ class SignOutUser extends StatelessWidget {
       onPressed: () {
         FirebaseAuth user = FirebaseAuth.instance;
         if (user.currentUser != null) {
-          FirebaseAuth.instance.signOut();
+          user.signOut();
           showSnackBar(
               "Signed out " + user.currentUser!.uid.toString(), context);
-          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/login', (route) => false);
         } else {
           showSnackBar("Nobody signed in!", context);
-          Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/login', (route) => false);
         }
       },
       child: const Icon(Icons.logout, color: white),

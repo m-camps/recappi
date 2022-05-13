@@ -1,37 +1,33 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recappi/src/constants.dart';
 import 'package:recappi/src/routes.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
-FirebaseAuth auth = FirebaseAuth.instance;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const MainFrame());
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
 }
 
-class MainFrame extends StatefulWidget {
-  const MainFrame({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-  @override
-  _MainFrameState createState() => _MainFrameState();
-}
-
-class _MainFrameState extends State<MainFrame> {
   @override
   Widget build(BuildContext context) {
+    log("SignedIn: " + auth.isSignedIn().toString(), name: "OnStartup");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Recappi",
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFFD5320B, primaryRedSwatch),
+        fontFamily: GoogleFonts.raleway().fontFamily,
       ),
       routes: mainroute,
-      initialRoute: "/",
+      initialRoute: (auth.isSignedIn()) ? "/homepage" : "/login",
     );
   }
 }

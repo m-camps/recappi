@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recappi/src/constants.dart';
-import 'package:recappi/src/firebase_auth/auth_signout.dart';
-import 'package:recappi/src/pages/discover_page.dart';
-import 'package:recappi/src/pages/myfriends_page.dart';
+import 'package:recappi/src/widgets/sign_out_button.dart';
+
+import 'package:recappi/src/screens/discover_page.dart';
+import 'package:recappi/src/screens/myfriends_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,10 +12,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [SignOutUser()],
+        actions: const [
+          SignOutUser(),
+        ],
         title: const LogoAppBarHome(),
       ),
-      body: const BottomNavBar(),
+      body: const RepaintBoundary(child: BottomNavBar()),
       backgroundColor: whiteBG,
     );
   }
@@ -33,47 +36,6 @@ class LogoAppBarHome extends StatelessWidget {
   }
 }
 
-class HomeTabBar extends StatelessWidget with PreferredSizeWidget {
-  const HomeTabBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: TabBar(
-          labelStyle: TextStyle(fontWeight: FontWeight.w800),
-          labelColor: primaryRed,
-          unselectedLabelColor: unselected,
-          indicatorColor: primaryRed,
-          tabs: [
-            Tab(text: 'My friends'),
-            Tab(text: 'Discover'),
-          ],
-        ),
-        body: HomeTabView(),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-}
-
-class HomeTabView extends StatelessWidget {
-  const HomeTabView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const TabBarView(
-      children: [
-        MyFriends(),
-        Discover(),
-      ],
-    );
-  }
-}
-
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
@@ -84,9 +46,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _index = 0;
   final List<Widget> _bottomNavPages = const [
-    HomeTabBar(),
-    Text('Add'),
-    Text('My Recipes')
+    MyFriends(),
+    Discover(),
+    Text('My Profile')
   ];
 
   void _changeIndex(int index) {
@@ -100,11 +62,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       body: _bottomNavPages.elementAt(_index),
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: primaryRed,
+        iconSize: 30,
+        unselectedItemColor: unselected,
+        selectedFontSize: 12.0,
+        unselectedFontSize: 12.0,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
         items: [
           item("Home", const Icon(Icons.home)),
-          item("Add", const Icon(Icons.add_box)),
-          item("My Recipes", const Icon(Icons.menu_book_rounded)),
+          item("Friends", const Icon(Icons.supervisor_account)),
+          item("My Profile", const Icon(Icons.account_box)),
         ],
         currentIndex: _index,
         onTap: _changeIndex,
