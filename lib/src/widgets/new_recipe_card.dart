@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:recappi/src/models/recipe.dart';
 
 import '../constants.dart';
 
 class NewRecipeCard extends StatelessWidget {
-  final String imageUrl;
+  final Recipe recipe;
 
   const NewRecipeCard({
     Key? key,
-    required this.imageUrl,
+    required this.recipe,
   }) : super(key: key);
 
   @override
@@ -22,12 +23,17 @@ class NewRecipeCard extends StatelessWidget {
         child: SizedBox(
           height: 300,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Flexible(flex: 2, child: RecipeContent()),
               Flexible(
-                  flex: 1,
+                  flex: 3,
+                  child: RecipeContent(
+                    name: recipe.name,
+                  )),
+              Flexible(
+                  flex: 2,
                   child: RecipeImage(
-                    imageUrl: imageUrl,
+                    imageUrl: recipe.photo,
                   )),
             ],
           ),
@@ -44,13 +50,16 @@ class RecipeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12.0),
-        child: CachedNetworkImage(
-          imageUrl: imageUrl,
-          fit: BoxFit.cover,
+    return SizedBox(
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
@@ -58,12 +67,17 @@ class RecipeImage extends StatelessWidget {
 }
 
 class RecipeContent extends StatelessWidget {
-  const RecipeContent({Key? key}) : super(key: key);
+  final String name;
+  const RecipeContent({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [Text("Test")],
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [Text(name)],
     );
   }
 }

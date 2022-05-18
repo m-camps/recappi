@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:recappi/src/manager/storage_manager.dart';
+import 'package:recappi/src/models/recipe.dart';
 
 import '../constants.dart';
 
@@ -29,7 +30,12 @@ class _DiscoverState extends State<Discover> {
           const ImageBuilder(),
           ElevatedButton(
               onPressed: () => setImageFile(),
-              child: const Text("Upload Image"))
+              child: const Text("Upload Image")),
+          ElevatedButton(
+              onPressed: () => fillFireStore(),
+              child: const Text(
+                "Upload recipe",
+              ))
         ],
       ),
     );

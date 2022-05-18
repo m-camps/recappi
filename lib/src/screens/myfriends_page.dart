@@ -52,10 +52,3 @@ class MyFriends extends StatelessWidget {
 //   }
 // }
 
-makeRecipeCard() async {
-  final recipeImageUrl = await StorageManager().getImageUrl("recipe_3.jpg");
-
-  return NewRecipeCard(
-    imageUrl: recipeImageUrl,
-  );
-}

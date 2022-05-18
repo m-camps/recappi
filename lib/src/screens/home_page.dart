@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recappi/src/constants.dart';
+import 'package:recappi/src/screens/myprofile.dart';
 import 'package:recappi/src/widgets/sign_out_button.dart';
 
 import 'package:recappi/src/screens/discover_page.dart';
@@ -46,9 +47,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _index = 0;
   final List<Widget> _bottomNavPages = const [
-    MyFriends(),
+    Text("HEllo"),
     Discover(),
-    Text('My Profile')
+    MyProfile(),
   ];
 
   void _changeIndex(int index) {
