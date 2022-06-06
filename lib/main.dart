@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recappi/src/constants.dart';
 import 'package:recappi/src/routes.dart';
 import 'firebase_options.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: "Recappi",
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFFD5320B, primaryRedSwatch),
-        fontFamily: GoogleFonts.raleway().fontFamily,
+        fontFamily: 'Raleway',
       ),
       routes: mainroute,
       initialRoute: (auth.isSignedIn()) ? "/homepage" : "/login",

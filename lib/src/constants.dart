@@ -8,6 +8,10 @@ const white = Color(0xFFFFFFFF);
 const whiteBG = Color(0xFFFAEFEC);
 const unselected = Color(0xFFBBBBBB);
 const text = Color(0xFF383838);
+const yellow = Color(0xFFF6AE2D);
+const green = Color(0xFF659157);
+const lightBlue = Color(0xFF467599);
+const darkBlue = Color(0xFF1D3354);
 
 const Map<int, Color> primaryRedSwatch = {
   50: Color.fromRGBO(213, 50, 11, .1),

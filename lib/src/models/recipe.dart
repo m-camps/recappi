@@ -12,12 +12,7 @@ class Recipe {
   final String photo;
   final Timestamp timeCreation;
   final Timestamp timeEdit;
-
-  final int amountIngredients;
-  final int timeToCook;
-  final int difficulty;
-  final bool vega;
-  final bool vegan;
+  final Map<String, int> tags;
 
   Recipe({
     required this.authorUid,
@@ -27,11 +22,7 @@ class Recipe {
     required this.photo,
     required this.timeCreation,
     required this.timeEdit,
-    required this.amountIngredients,
-    required this.timeToCook,
-    required this.difficulty,
-    required this.vega,
-    required this.vegan,
+    required this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -43,11 +34,7 @@ class Recipe {
       'photo': photo,
       'timeCreation': timeCreation,
       'timeEdit': timeEdit,
-      'amountIngredients': amountIngredients,
-      'timeToCook': timeToCook,
-      'difficulty': difficulty,
-      'vega': vega,
-      'vegan': vegan,
+      'tags': tags,
     };
   }
 
@@ -60,19 +47,14 @@ class Recipe {
       photo: map['photo'],
       timeCreation: map['timeCreation'],
       timeEdit: map['timeEdit'],
-      amountIngredients: map['amountIngredients'],
-      timeToCook: map['timeToCook'],
-      difficulty: map['difficulty'],
-      vega: map['vega'],
-      vegan: map['vegan'],
+      tags: map['tags'],
     );
   }
 }
 
 getDummyRecipe() async {
-  final photo = await StorageManager().getImageUrl("/recipe_5.jpg");
+  final photo = await StorageManager().getImageUrl("/recipe_4.jpg");
   return Recipe(
-    amountIngredients: 2,
     authorUid: auth.getUid(),
     ingredientList: [
       '500gr. Spaghetti',
@@ -92,14 +74,16 @@ getDummyRecipe() async {
       "Giet de spaghetti af. Voeg de spekjes en de knoflook toe aan de pan met spaghetti. Voeg het ei mengsel toe en begin te roeren terwijl de pan op laag vuur staat.",
       "Serveer zsm en besprenkel met de resterende kaas."
     ],
-    name: "Carbonara",
+    name: "Grilled Zucchini and Yellow Squash with Champagne Vinaigrette",
     photo: photo,
     timeCreation: Timestamp.now(),
     timeEdit: Timestamp.now(),
-    timeToCook: 90,
-    difficulty: 5,
-    vega: false,
-    vegan: false,
+    tags: {
+      'Moeilijk': 0xFF467599,
+      'Hoofdgerecht': 0xFFD5320B,
+      'Vega': 0xFF659157,
+      'Very Spicy': 0xFF94251E,
+    },
   );
 }
 

@@ -1,54 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:recappi/src/manager/storage_manager.dart';
-import 'package:recappi/src/widgets/new_recipe_card.dart';
-import 'package:recappi/src/widgets/recipe_card.dart';
 
-// class MyFriends extends StatelessWidget {
-//   const MyFriends({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       itemCount: 10,
-//       itemBuilder: (BuildContext context, int index) {
-//         return const RecipeCard(name: "Vegetarische Curry met groenten");
-//       },
-//     );
-//   }
-// }
+import '../models/recipe.dart';
+import '../widgets/new_recipe_card.dart';
 
 class MyFriends extends StatelessWidget {
   const MyFriends({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return const RecipeCard(name: "Vegetarische Curry met groenten");
+    getRecipeList();
+    return FutureBuilder(
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          return ListView.builder(
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
+              return NewRecipeCard(recipe: snapshot.data as Recipe);
+            },
+          );
+        }
       },
+      future: getDummyRecipe(),
     );
   }
 }
 
-// class MyFriends extends StatelessWidget {
-//   const MyFriends({Key? key}) : super(key: key);
+getRecipeList() async {
+  CollectionReference recipes =
+      FirebaseFirestore.instance.collection('publicRecipes');
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       itemCount: 10,
-//       itemBuilder: (BuildContext context, int index) {
-//         return FutureBuilder(
-//           initialData: const CircularProgressIndicator(),
-//           builder: (context, snapshot) {
-//             final ret = snapshot.data as Widget;
-//             return ret;
-//           },
-//           future: makeRecipeCard(),
-//         );
-//       },
-//     );
-//   }
-// }
-
+  Recipe list;
+  // recipes.get().then((DocumentSnapshot documentSnapshot) {
+  //   if (documentSnapshot.exists) {
+  //     print(documentSnapshot);
+  //   }
+  // });
+  print(recipes);
+}
