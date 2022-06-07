@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recappi/src/models/recipe.dart';
@@ -180,12 +178,7 @@ class TagBlockWrap extends StatelessWidget {
     return Wrap(
       runSpacing: 5.0,
       spacing: 5.0,
-      children:
-          // TagBlock(name: "Hoofdgerecht", color: primaryRed),
-          // TagBlock(name: "Makkelijk", color: lightBlue),
-          // TagBlock(name: "Vega", color: green),
-          // TagBlock(name: "30 min", color: darkBlue)
-          makeTagBlock(),
+      children: makeTagBlock(),
     );
   }
 }
