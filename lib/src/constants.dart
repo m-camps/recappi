@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recappi/src/manager/auth_manager.dart';
+import 'package:recappi/src/manager/fstore_manager.dart';
 
 const primaryRed = Color(0xFFD5320B);
 const extraGreen = Color(0xFF009070);
@@ -27,4 +28,5 @@ const Map<int, Color> primaryRedSwatch = {
 };
 
 AuthManager auth = AuthManager();
+FstoreManager fstore = FstoreManager();
 // StorageManager storage = StorageManager();

@@ -1,73 +1,82 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../models/recipe.dart';
-import '../widgets/new_recipe_card.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:recappi/src/manager/storage_manager.dart';
+import 'package:recappi/src/models/recipe.dart';
 
-// class MyFriends extends StatelessWidget {
-//   const MyFriends({Key? key}) : super(key: key);
+import '../constants.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     getRecipeList();
-//     return FutureBuilder(
-//       builder: (context, snapshot) {
-//         if (!snapshot.hasData) {
-//           return const Center(child: CircularProgressIndicator());
-//         } else {
-//           return ListView.builder(
-//             itemCount: 10,
-//             itemBuilder: (BuildContext context, int index) {
-//               return NewRecipeCard(recipe: snapshot.data as Recipe);
-//             },
-//           );
-//         }
-//       },
-//       future: getDummyRecipe(),
-//     );
-//   }
-// }
+class Discover extends StatefulWidget {
+  const Discover({Key? key}) : super(key: key);
 
-class MyFriends extends StatelessWidget {
-  const MyFriends({Key? key}) : super(key: key);
+  @override
+  State<Discover> createState() => _DiscoverState();
+}
+
+class _DiscoverState extends State<Discover> {
+  setImageFile() async {
+    final file = await getImagePickerFile();
+    StorageManager().uploadImage(file: file, userUid: auth.getUid());
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        } else {
-          List<Recipe> list = snapshot.data as List<Recipe>;
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index) {
-              return NewRecipeCard(recipe: list[index]);
-            },
-          );
-        }
-      },
-      future: getRecipeList(),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const ImageBuilder(),
+          ElevatedButton(
+              onPressed: () => setImageFile(),
+              child: const Text("Upload Image")),
+          ElevatedButton(
+              onPressed: () => fillFireStore(),
+              child: const Text(
+                "Upload recipe",
+              ))
+        ],
+      ),
     );
   }
 }
 
-getRecipeList() async {
-  final recipes = FirebaseFirestore.instance
-      .collection('publicRecipes')
-      .orderBy("timeCreation");
+class ImageBuilder extends StatefulWidget {
+  const ImageBuilder({Key? key}) : super(key: key);
 
-  List<Recipe> list = [];
-  await recipes.get().then(
-    (QuerySnapshot querySnapshot) {
-      for (var doc in querySnapshot.docs) {
-        final data = doc.data() as Map<String, dynamic>;
-        list.add(Recipe.fromMap(data));
-      }
-    },
-    onError: (e) => log("Error"),
+  @override
+  State<ImageBuilder> createState() => _ImageBuilderState();
+}
+
+class _ImageBuilderState extends State<ImageBuilder> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      initialData: const CircularProgressIndicator(),
+      builder: (context, snapshot) {
+        var ret = snapshot.data as Widget;
+        return ret;
+      },
+      future: getPhoto(),
+    );
+  }
+}
+
+Future<Widget> getPhoto() async {
+  final url = await StorageManager().getProfileImageUrl();
+
+  return CachedNetworkImage(
+    imageUrl: url,
+    width: 300,
+    fit: BoxFit.cover,
   );
-  return list;
+}
+
+getImagePickerFile() async {
+  final ImagePicker _picker = ImagePicker();
+  final XFile? image =
+      await _picker.pickImage(source: ImageSource.camera, imageQuality: 30);
+
+  return File(image!.path);
 }
