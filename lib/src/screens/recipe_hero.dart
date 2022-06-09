@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recappi/src/constants.dart';
 import 'package:recappi/src/models/recipe.dart';
-import 'package:recappi/src/widgets/recipe_card.dart';
+import 'package:recappi/src/widgets/tag_block.dart';
 
 class RecipeHero extends StatelessWidget {
   final Recipe recipe;
@@ -19,9 +19,20 @@ class RecipeHero extends StatelessWidget {
             floating: false,
             pinned: false,
             snap: false,
-            expandedHeight: 200.0,
+            expandedHeight: 400.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(recipe.name),
+              title: Container(
+                decoration: const BoxDecoration(
+                  color: primaryRed,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(recipe.name),
+                ),
+              ),
               background: Hero(
                 tag: recipe.timeCreation,
                 child: CachedNetworkImage(
@@ -32,14 +43,13 @@ class RecipeHero extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: TagBlockWrap(
                 recipe: recipe,
               ),
             ),
-          )),
+          ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
@@ -84,7 +94,7 @@ class RecipeHero extends StatelessWidget {
           line,
           textAlign: TextAlign.start,
           style: const TextStyle(
-            fontSize: 16.0,
+            fontSize: 20.0,
             fontWeight: FontWeight.w500,
           ),
         ),
