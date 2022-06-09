@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recappi/src/models/recipe.dart';
+import 'package:recappi/src/screens/recipe_hero.dart';
 
 import '../constants.dart';
 
@@ -16,11 +17,20 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final double cardHeight = (MediaQuery.of(context).size.height - 150) / 3;
     return Card(
-        color: white,
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+      color: white,
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RecipeHero(recipe: recipe),
+            ),
+          );
+        },
         child: SizedBox(
           height: cardHeight,
           child: Row(
@@ -39,7 +49,9 @@ class RecipeCard extends StatelessWidget {
                   )),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -58,9 +70,12 @@ class RecipeImage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12.0),
-          child: CachedNetworkImage(
-            imageUrl: recipe.photo,
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: recipe.timeCreation,
+            child: CachedNetworkImage(
+              imageUrl: recipe.photo,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

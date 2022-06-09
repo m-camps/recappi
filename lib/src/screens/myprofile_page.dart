@@ -7,17 +7,10 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text("this text"),
-        Expanded(
-          child: RecipeListQuery(
-            query: FirebaseFirestore.instance
-                .collection('publicRecipes')
-                .orderBy("timeCreation"),
-          ),
-        ),
-      ],
+    return RecipeListQuery(
+      query: FirebaseFirestore.instance
+          .collection('publicRecipes')
+          .orderBy("timeCreation"),
     );
   }
 }
