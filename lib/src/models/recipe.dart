@@ -50,20 +50,6 @@ class Recipe {
       tags: Map<String, int>.from(map['tags']),
     );
   }
-
-  // factory Recipe.fromFirestore(DocumentSnapshot doc) {
-  //   var data = doc.data;
-  //   return Recipe(
-  //     authorUid: data['authorUid'],
-  //     ingredientList: List<String>.from(data['ingredientList']),
-  //     instructionList: List<String>.from(map['instructionList']),
-  //     name: map['name'],
-  //     photo: map['photo'],
-  //     timeCreation: map['timeCreation'],
-  //     timeEdit: map['timeEdit'],
-  //     tags: map['tags'],
-  //   );
-  // }
 }
 
 getDummyRecipe() async {

@@ -13,72 +13,43 @@ class RecipeHero extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            elevation: 20.0,
-            backgroundColor: primaryRed,
-            floating: false,
-            pinned: false,
-            snap: false,
-            expandedHeight: 400.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Container(
-                decoration: const BoxDecoration(
-                  color: primaryRed,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(recipe.name),
-                ),
-              ),
-              background: Hero(
-                tag: recipe.timeCreation,
-                child: CachedNetworkImage(
-                  imageUrl: recipe.photo,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
+          SliverPhotoAppBar(recipe: recipe),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TagBlockWrap(
-                recipe: recipe,
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                recipe.name,
+                style: const TextStyle(
+                  fontSize: 24.0,
+                  color: text,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
+          SliverTagBlock(recipe: recipe),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                Card(
-                  child: SizedBox(
-                    width: 1000,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: makeTextBox(recipe.ingredientList),
-                      ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: makeTextBox(recipe.ingredientList),
                   ),
                 ),
-                Card(
-                  child: SizedBox(
-                    width: 1000,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: makeTextBox(recipe.instructionList),
-                      ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: makeTextBox(recipe.instructionList),
                   ),
                 ),
               ],
             ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 200.0),
           ),
         ],
       ),
@@ -101,5 +72,56 @@ class RecipeHero extends StatelessWidget {
       ));
     }
     return ret;
+  }
+}
+
+class SliverPhotoAppBar extends StatelessWidget {
+  const SliverPhotoAppBar({
+    Key? key,
+    required this.recipe,
+  }) : super(key: key);
+
+  final Recipe recipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      // elevation: 20.0,
+      backgroundColor: primaryRed,
+      pinned: true,
+      expandedHeight: MediaQuery.of(context).size.height * 0.3,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Hero(
+          tag: recipe.timeCreation,
+          child: CachedNetworkImage(
+            imageUrl: recipe.photo,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SliverTagBlock extends StatelessWidget {
+  const SliverTagBlock({
+    Key? key,
+    required this.recipe,
+  }) : super(key: key);
+
+  final Recipe recipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: TagBlockWrap(
+            recipe: recipe,
+          ),
+        ),
+      ),
+    );
   }
 }

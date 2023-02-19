@@ -32,10 +32,11 @@ class _DiscoverState extends State<Discover> {
               onPressed: () => setImageFile(),
               child: const Text("Upload Image")),
           ElevatedButton(
-              onPressed: () => fillFireStore(),
-              child: const Text(
-                "Upload recipe",
-              ))
+            onPressed: () => fillFireStore(),
+            child: const Text(
+              "Upload recipe",
+            ),
+          )
         ],
       ),
     );
