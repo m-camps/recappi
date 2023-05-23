@@ -1,7 +1,16 @@
-# recappi
+# Recappi
 
-A new Flutter project.
+A recipe viewing app. Recipes can be loaded using a JSON file.
 
+## Project Goals
+
+- Get more familiar with flutter UI components
+- JSON serialization in flutter
+- Simple auth with Firebase
+- Basic state management and navigation
+
+## Snapshots
+![Snapshot](assets/app_images/create_recipe.jpg)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
