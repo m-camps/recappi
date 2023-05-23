@@ -9,8 +9,15 @@ A recipe viewing app. Recipes can be loaded using a JSON file.
 - Simple auth with Firebase
 - Basic state management and navigation
 
-## Snapshots
-![Snapshot](assets/app_images/create_recipe.jpg)
+## Screenshots
+
+Some in app screenshots:
+<p >
+  <img src="assets/app_images/home_page.jpg" width="300" alt="accessibility text">
+  <img src="assets/app_images/create_recipe.jpg" width="300" alt="accessibility text">
+  <img src="assets/app_images/display_recipe.jpg" width="300" alt="accessibility text">
+</p>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
